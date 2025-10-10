@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        * {
+            font-family: monospace;
+            font-size: x-large;
+        }
+
+        .klasa {
+            color: red;
+            border: 2px dashed red;
+            width: fit-content;
+            padding: 10px;
+            margin: 20px;
+        }
+
+        .blue {
+            color: blue;
+            border: 2px dashed blue;
+        }
+
+        button {
+            background-color: gainsboro;
+            border: 2px dashed red;
+            padding: 5px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="react-app" />
+
+    <script type="text/babel">
+        const data = [
+            { id: 1, quantity: 1, name: "masło" },
+            { id: 2, quantity: 6, name: "mleko" },
+            { id: 3, quantity: 3, name: "chleb" }, { id: 4, quantity: 3, name: "kawa" }
+        ];
+
+        function ListItem(props) {
+
+            console.log("props wchodzące do komponentu: " + data);
+
+            return (
+                <div className="klasa">
+
+                    {props.quantity} x {props.name}
+
+                    <button className="b">kup</button>
+                    <button className="b">usuń</button>
+                </div>
+            );
+        }
+
+        // function List1() {
+        //     return (
+        //         <div className="klasa blue">
+        //             static list
+        //         </div>
+        //     )
+        // }
+
+
+
+        function List1() {
+            console.log("list1")
+            return (
+
+                <div>
+                    <ListItem quantity={data[0].quantity} name={data[0].name} />
+                    <ListItem quantity={data[1].quantity} name={data[1].name} />
+                    <ListItem quantity={data[2].quantity} name={data[2].name} />
+                </div>
+            );
+        }
+
+        function List2() {
+            console.log("list2")
+            const objects = []
+
+            return (
+                <div>
+                    for(let i = 0; i < data.length; i++)
+                    {
+                        objects.push(<ListItem key={i} quantity={data[i].quantity} name={data[i].name} />)
+                    }
+                </div>
+            );
+        }
+
+
+        ReactDOM.render(
+            <List />,
+            document.getElementById('react-app')
+        );
+
+    </script>
+</body>
+
+</html>
