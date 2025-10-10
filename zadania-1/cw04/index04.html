@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        *{
+            font-family: monospace;
+            font-size: x-large;
+        }
+        .klasa {
+            color: red;
+            border: 2px dashed red;
+            width: fit-content;
+            padding: 10px;
+            margin: 20px;
+        }
+
+        button {
+            background-color: gainsboro;
+            border: 2px dashed red;
+            padding: 5px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="react-app" />
+
+    <script type="text/babel">
+        function ListItem(props) {
+
+            console.log("props wchodzące do komponentu: " + props);
+
+            return (
+                <div className="klasa">
+
+                    {props.quantity} x {props.name}
+
+                    <button className="b">kup</button>
+                    <button className="b">usuń</button>
+                </div>
+            );
+        }
+
+        function List() {
+            return (
+                <>
+                    <ListItem quantity="1" name="masło" />
+                    <ListItem quantity="6" name="mleko" />
+                    <ListItem quantity="2" name="chleb" />
+                </>
+            );
+        }
+
+        ReactDOM.render(
+            <List />,
+            document.getElementById('react-app')
+        );
+    </script>
+</body>
+
+</html>
