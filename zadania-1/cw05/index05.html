@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <style>
+        * {
+            font-family: monospace;
+            font-size: x-large;
+        }
+
+        .klasa {
+            color: red;
+            border: 2px dashed red;
+            width: fit-content;
+            padding: 10px;
+            margin: 20px;
+        }
+
+        button {
+            background-color: gainsboro;
+            border: 2px dashed red;
+            padding: 5px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="react-app" />
+
+    <script type="text/babel">
+        const data = [
+            { id: 1, quantity: 1, name: "masło" },
+            { id: 2, quantity: 6, name: "mleko" },
+            { id: 3, quantity: 3, name: "chleb" }
+        ];
+
+        data.map(function (elem, i) {
+            console.log(i + " dowolne działanie dla kadego elementu tablicy data")
+        })
+
+        const quantityArray = data.map(function (elem) {
+            return (elem.quantity)
+        })
+        console.log("quantityArray", quantityArray)
+
+        const allDataMapArray = data.map(function (elem) {
+            return elem
+        })
+        console.log("allDataMapArray", allDataMapArray)
+
+        const powerArray = data.map(function (elem) {
+            return elem.quantity ** 2
+        })
+        console.log("powerArray", powerArray)
+
+        const noIdArray = data.map(function (elem) {
+            return {
+
+                quantity: elem.quantity * 3,
+                name: "imię = " + elem.name
+            }
+        })
+        console.log("noIdArray", noIdArray)
+
+        data.filter(function (elem) {
+            console.log(`czy quantity dla id = ${elem.id} > 1`, elem.quantity > 1)
+        })
+
+        data.filter(function (elem) {
+            console.log(`czy elemen id = ${elem.id} to chleb`, elem.name == "chleb")
+        })
+
+        const breadArray = data.filter(function (elem) {
+            return elem.name == "chleb"
+        })
+        console.log("breadArray", breadArray)
+
+        const biggerThanOneArray = data.filter(function (elem) {
+            return elem.quantity > 1
+        })
+        console.log("biggerThanOneArray", biggerThanOneArray);
+
+
+    </script>
+</body>
+
+</html>
