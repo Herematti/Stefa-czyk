@@ -87,20 +87,17 @@
         function List2() {
             console.log("list2")
             const objects = []
-
+            for(let i = 0;i<data.length;i++){
+   objects.push ( <ListItem key={i} quantity={data[i].quantity} name={data[i].name} />)
+}
             return (
-                <div>
-                    for(let i = 0; i < data.length; i++)
-                    {
-                        objects.push(<ListItem key={i} quantity={data[i].quantity} name={data[i].name} />)
-                    }
-                </div>
+                objects
             );
         }
 
 
         ReactDOM.render(
-            <List />,
+            <List1 /><List2/>,
             document.getElementById('react-app')
         );
 

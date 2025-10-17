@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <title>Document</title>
+    <style>
+        * {
+            background-color: #333333;
+            color: whitesmoke;
+        }
+
+        .square {
+            padding: 5px;
+            border: 4px solid whitesmoke;
+            align-self: center;
+            margin: 5px;
+            display: flex;
+            flex-direction: column;
+            width: 200px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        div>div {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="react-app">abc</div>
+
+    <script type="text/babel">
+        const Square = () => {
+            const [data] = React.useState({ a: 1, b: 2, c: 3 })
+
+            return (
+                <div className="square">
+                    <h2>a={data.a}</h2>
+                    <h2>b={data.b}</h2>
+                    <h2>c={data.c}</h2>
+                </div >
+            );
+        }
+
+        ReactDOM.render(
+            <div>
+                <Square/>
+                <Square/>
+                <Square/>
+            </div>,
+            document.getElementById("react-app")
+        );
+    </script>
+</body>
+
+</html>
