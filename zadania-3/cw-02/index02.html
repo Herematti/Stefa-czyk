@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <title>Document</title>
+    <style>
+        * {
+            font-family: monospace;
+            font-size: larger;
+        }
+
+        section {
+            border: 2px solid black;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-radius: 20px;
+        }
+
+        .selec {
+            height: 250px;
+            margin: 10px;
+            width: fit-content;
+        }
+
+        select {
+            width: fit-content;
+            margin: 10px;
+
+        }
+
+        p {
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="react-app"></div>
+
+
+
+    <script type="text/babel">
+
+
+        const MyForm = () => {
+
+            const [selectedValue, setSelected] = React.useState([])
+            function onHandleSelect(setr) {
+                let temp = [...selectedValue]
+                temp.push(setr)
+                setSelected(temp);
+            }
+
+            function sub()
+            {
+                alert(selectedValue)
+            }
+
+            const array = [
+                { id: 0, name: "Hamlet" },
+                { id: 1, name: "Krzyzacy" },
+                { id: 2, name: "Lalka" },
+                { id: 3, name: "Proces" }
+            ]
+
+            const array2 = [
+                { id: 0, name: "Kraków" },
+                { id: 1, name: "Warszawa" },
+                { id: 2, name: "Gdańsk" }
+            ]
+
+            return (
+                <section>
+                    <p>Komponent MyForm</p>
+                    <form onSubmit={sub}>
+                        <MySelect handleSelect={onHandleSelect} array={array} />
+                        <MySelect handleSelect={onHandleSelect} array={array2} />
+                        <input type="submit" value="send"/>
+                    </form>
+                    <p>{JSON.stringify(selectedValue)}</p>
+                </section>
+            );
+        }
+
+        const MySelect = (props) => {
+            console.log(props)
+            const [selectedValue, setSelect] = React.useState("")
+
+            function onSelectChange(event) {
+                setSelect(event.target.value)
+                console.log(event.target.value)
+                props.handleSelect(event.target.value)
+            }
+
+            return (
+                <section className="selec">
+                    <select value={selectedValue} onChange={onSelectChange}>
+
+                        {props.array.map(e => (<option value={e.name} key={e.id}>{e.name}</option>))}
+                    </select>
+                    <p>Wybrane z select:<br /> {selectedValue}</p>
+                </section>
+            );
+        }
+
+        // const bodyForm = () => {
+        //     const [data, setData] = React.useState("");
+        //     const [wyslane, setWyslane] = React.useState("Niewysłane")
+        //     return (
+        //         <div>
+        //             comp MyForm
+        //             <Form data={data} setData={setData} />
+        //             <p>Status: {wyslane}</p>
+        //             <p>Status: {data}</p>
+        //         </div>
+        //     )
+        // }
+
+
+
+
+        ReactDOM.render(
+            <> <MyForm /><MyForm /></>,
+
+            document.getElementById('react-app')
+        );
+    </script>
+</body>
+
+</html>
