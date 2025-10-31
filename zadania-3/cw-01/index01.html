@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <title>Document</title>
+    <style>
+        *{
+            font-family: monospace;
+            font-size: larger;
+        }
+        .klasa{
+            border: 2px solid black;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            width: fit-content;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="react-app"></div>
+
+
+
+    <script type="text/babel">
+
+
+        const Form = () => {
+            const [data, setData] = React.useState("");
+            const [wyslane, setWyslane] = React.useState("Niewysłane")
+            const handleChange = (event) => {
+                console.log(event.target.value)
+                setData(event.target.value);
+                setWyslane("Niewysłane")
+            }
+            const handleSubmit = (event) => {
+                //blokada przed wysłaniem formularza
+                event.preventDefault();
+                setData("");
+                setWyslane("Wysłane")
+
+            }
+
+            return (
+                <div className="klasa">
+                    comp Myform
+                    <form onSubmit={handleSubmit} >
+                        <input type="text" value={data} onChange={handleChange} />
+                        <input type="submit" value="send" />
+
+                    </form><p>Status: {wyslane}</p>
+                    <p>data: {data}</p>
+                </div>
+            );
+        }
+
+        // const bodyForm = () => {
+        //     const [data, setData] = React.useState("");
+        //     const [wyslane, setWyslane] = React.useState("Niewysłane")
+        //     return (
+        //         <div>
+        //             comp MyForm
+        //             <Form data={data} setData={setData} />
+        //             <p>Status: {wyslane}</p>
+        //             <p>Status: {data}</p>
+        //         </div>
+        //     )
+        // }
+
+
+
+
+        ReactDOM.render(
+            React.createElement(Form),
+            document.getElementById('react-app')
+        );
+    </script>
+</body>
+
+</html>
